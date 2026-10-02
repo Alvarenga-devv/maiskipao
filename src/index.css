@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Paleta — pão recém-saído do forno + café + confeitaria artesanal */
+  --color-cream: #FBF4E9;
+  --color-cream-dark: #F1E6D3;
+  --color-coffee-50: #F7EFE6;
+  --color-coffee-100: #E8D4BC;
+  --color-coffee-300: #C9975F;
+  --color-caramel: #B9752F;
+  --color-caramel-dark: #8F5424;
+  --color-gold: #E0A64A;
+  --color-gold-light: #F0C784;
+  --color-coffee: #4A2E1A;
+  --color-coffee-dark: #2C1A0E;
+  --color-dark: #1C110A;
+
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 1s ease forwards;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Elemento usado pelo hook de scroll-reveal: oculto até entrar na viewport */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-dark);
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-coffee-100);
+  border-radius: 999px;
+}
